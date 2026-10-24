@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Build the three Moodle PDFs (Moodle accepts PDFs only, max 3 files).
 
-  submission/Mission02_SquadronShannon_1_Report.pdf          cover, README overview, reports 01-03
+  submission/mission-02-doc.pdf                               mission-02-doc.md + full reports 01-03 (appendices)
   submission/Mission02_SquadronShannon_2_Code_Tests_Notebook.pdf  04_fst_noisy_simulator.py + tests + notebook
   submission/Mission02_SquadronShannon_3_Slides_and_Transcript.pdf  presentation slides + 05 transcript
 
@@ -10,7 +10,6 @@ Needs: pip install markdown pypdf pygments   (plus Google Chrome)
 Run:  python tools/build_pdfs.py
 """
 
-import datetime as dt
 import html
 import re
 import shutil
@@ -48,13 +47,6 @@ blockquote { border-left: 3px solid #0369a1; margin: 8px 0; padding: 2px 12px; c
 a { color: #0369a1; text-decoration: none; }
 hr { border: 0; border-top: 1px solid #ccd6e6; margin: 14px 0; }
 .doc { page-break-before: always; }
-.cover { height: 250mm; display: flex; flex-direction: column; justify-content: center; }
-.cover .kicker { font-family: Menlo, monospace; letter-spacing: .15em; color: #0369a1; font-size: 9pt; text-transform: uppercase; }
-.cover h1 { font-size: 30pt; border: 0; margin: 8px 0 4px; }
-.cover .sub { font-size: 13pt; color: #333; margin-bottom: 24px; }
-.cover table { width: auto; font-size: 10.5pt; }
-.cover td { border: 0; padding: 3px 14px 3px 0; }
-.toc li { margin: 2px 0; }
 .src { font-size: 7.6pt; }
 .src pre { page-break-inside: auto; font-size: 7.6pt; line-height: 1.35; }
 .src .linenos { color: #8a94a6; padding-right: 6px; user-select: none; }
@@ -130,37 +122,15 @@ def chrome_pdf(html_text: str, out: Path, landscape_png: bool = False) -> None:
                     f"--print-to-pdf={out}", src.as_uri()], out)
 
 
-def cover() -> str:
-    today = dt.date.today().isoformat()
-    return f"""<div class="cover">
- <div class="kicker">14013 Conversational AI: History, Applications, Future · BTU Cottbus-Senftenberg · WS 2026/27</div>
- <h1>Mission 02 — FST Dialogue Systems, Lovelace’s Objection &amp; Noisy Channels</h1>
- <div class="sub">A Mealy finite-state dialogue manager, a 5-question Anti-Turing probe of live LLMs, and a Shannon noisy channel (7 words + mandatory noise) with entropy metrics</div>
- <table>
-  <tr><td><b>Squadron</b></td><td>Squadron Shannon</td></tr>
-  <tr><td><b>Deliverables 01–03</b></td><td>Ankit Kumar &amp; Garima Swami</td></tr>
-  <tr><td><b>Deliverables 04–05</b></td><td>Ankit Kumar, Garima Swami &amp; Mansi Purohit</td></tr>
-  <tr><td><b>Group members</b></td><td>Ankit Kumar · Garima Swami · Mansi Purohit</td></tr>
-  <tr><td><b>Repository</b></td><td><a href="{REPO}">{REPO.replace('https://', '')}</a></td></tr>
-  <tr><td><b>Date</b></td><td>{today}</td></tr>
- </table>
- <h3 style="margin-top:28px">Contents of this submission</h3>
- <ol class="toc">
-  <li><b>PDF 1 · Report:</b> overview (README) · 01 Lovelace Inquiry Brief · 02 FST &amp; Noisy Protocol · 03 Entropy &amp; Hazard Audit</li>
-  <li><b>PDF 2 · Code, tests &amp; notebook:</b> 04_fst_noisy_simulator.py · tests/test_fst_noisy_simulator.py · ps02_solution.ipynb (with outputs)</li>
-  <li><b>PDF 3 · Slides &amp; transcript:</b> interactive presentation (static pages) · 05_Noisy_Interrogation_Transcript.md</li>
- </ol>
- <p style="margin-top:18px;color:#444">The raw run logs (JSON), the course-portal screenshots and the interactive (clickable) presentation are in the repository.</p>
-</div>"""
-
-
-def build_report(out: Path) -> None:
-    readme = (ROOT / "README.md").read_text(encoding="utf-8")
-    parts = [cover()]
-    for name in ("README.md", "01_Lovelace_Inquiry_Brief.md", "02_FST_and_Noisy_Protocol.md", "03_Entropy_Hazard_Audit.md"):
-        text = readme if name == "README.md" else (ROOT / name).read_text(encoding="utf-8")
-        parts.append(f'<section class="doc">{md_to_html(text)}</section>')
-    chrome_pdf(page("Mission 02 Report — Squadron Shannon", "".join(parts), mermaid=True), out)
+def build_mission_doc(out: Path) -> None:
+    """mission-02-doc.pdf (the course's required Moodle document): the squadron doc plus all station reports."""
+    parts = [f'<section>{md_to_html((ROOT / "mission-02-doc.md").read_text(encoding="utf-8"))}</section>']
+    for letter, name in zip("ABC", ("01_Lovelace_Inquiry_Brief.md", "02_FST_and_Noisy_Protocol.md",
+                                     "03_Entropy_Hazard_Audit.md")):
+        parts.append(f'<section class="doc"><p class="kicker" style="font-family:Menlo,monospace;color:#0369a1;'
+                     f'font-size:9pt;letter-spacing:.12em">APPENDIX {letter}</p>'
+                     f'{md_to_html((ROOT / name).read_text(encoding="utf-8"))}</section>')
+    chrome_pdf(page("mission-02-doc — Squadron Shannon", "".join(parts), mermaid=True), out)
 
 
 def build_code(out: Path) -> None:
@@ -242,8 +212,8 @@ def main() -> None:
     OUT.mkdir(exist_ok=True)
     with tempfile.TemporaryDirectory() as t:
         tmp = Path(t)
-        rep = tmp / "report.pdf"; build_report(rep)
-        merge([rep], OUT / "Mission02_SquadronShannon_1_Report.pdf")
+        doc = tmp / "doc.pdf"; build_mission_doc(doc)
+        merge([doc], OUT / "mission-02-doc.pdf")
         code = tmp / "code.pdf"; build_code(code)
         merge([code], OUT / "Mission02_SquadronShannon_2_Code_Tests_Notebook.pdf")
         slides = build_slides(tmp)

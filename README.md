@@ -29,6 +29,8 @@ This mission restores AURA **Subsystem 02 (Signal Entropy Decoders & Statistical
 | 4 | [`04_fst_noisy_simulator.py`](04_fst_noisy_simulator.py) · [`ps02_solution.ipynb`](ps02_solution.ipynb) | Systems Architect | Ankit Kumar, Garima Swami & Mansi Purohit | Runnable engine: `FSTDialogueManager`, `NoisyChannel`, entropy metrics, stress tests, noise sweep, Anti-Turing probe, noisy interrogation. The notebook replays the live run from the logs, with outputs saved |
 | 5 | [`05_Noisy_Interrogation_Transcript.md`](05_Noisy_Interrogation_Transcript.md) | Full squad | Ankit Kumar, Garima Swami & Mansi Purohit | The 10-round live interrogation: intended / sent / received per turn, channel events, entropy, fidelity, FST state trace, verdict |
 
+**Squadron documentation:** [`mission-02-doc.md`](mission-02-doc.md) is the course's required summary (sign-off roster, architecture, each station's metrics and traces, unified test output, reflection). It is exported as `submission/mission-02-doc.pdf` with the full reports 01–03 attached, and uploaded to Moodle.
+
 We also tested the FST on the course website's interactive simulator (Week 2 → Simulation), as ps02 asks. Screenshots and inputs are in [`docs/portal_simulator/`](docs/portal_simulator/), and the comparison is in `03` §1.
 
 ## Quick start
