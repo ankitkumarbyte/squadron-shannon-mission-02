@@ -1,0 +1,58 @@
+Mission 02 simulator · Squadron Shannon · 2026-10-19T21:36:31+02:00 · model Gemini (gemini-3.5-flash-lite)
+
+==============================================================================
+FST STRESS TESTS (strict textbook FST vs hardened FST)
+==============================================================================
+S1 Unexpected answer order          strict=BROKEN  hardened=SAFE
+S2 Sarcasm                          strict=BROKEN  hardened=SAFE
+S3 Off-topic input                  strict=SAFE    hardened=SAFE
+S4 Adversarial prompt injection     strict=BROKEN  hardened=SAFE
+S5 Self-correction / contradiction  strict=BROKEN  hardened=SAFE
+
+==============================================================================
+NOISE SWEEP (FST task success vs. plasma noise)
+==============================================================================
+p=0.0  strict   complete=0.975  correct=0.975  wrong=0   abort=0.025  word_loss=0.0
+p=0.0  hardened complete=1.0    correct=1.0    wrong=0   abort=0.0    word_loss=0.0
+p=0.05 strict   complete=0.925  correct=0.925  wrong=0   abort=0.075  word_loss=0.048
+p=0.05 hardened complete=1.0    correct=1.0    wrong=0   abort=0.0    word_loss=0.046
+p=0.1  strict   complete=0.88   correct=0.88   wrong=0   abort=0.12   word_loss=0.098
+p=0.1  hardened complete=0.99   correct=0.99   wrong=0   abort=0.01   word_loss=0.098
+p=0.2  strict   complete=0.72   correct=0.72   wrong=0   abort=0.28   word_loss=0.189
+p=0.2  hardened complete=0.9    correct=0.9    wrong=0   abort=0.1    word_loss=0.19
+p=0.3  strict   complete=0.51   correct=0.51   wrong=0   abort=0.49   word_loss=0.297
+p=0.3  hardened complete=0.73   correct=0.73   wrong=0   abort=0.27   word_loss=0.298
+p=0.4  strict   complete=0.34   correct=0.34   wrong=0   abort=0.66   word_loss=0.401
+p=0.4  hardened complete=0.485  correct=0.485  wrong=0   abort=0.515  word_loss=0.402
+p=0.5  strict   complete=0.165  correct=0.165  wrong=0   abort=0.835  word_loss=0.501
+p=0.5  hardened complete=0.26   correct=0.26   wrong=0   abort=0.74   word_loss=0.502
+
+==============================================================================
+10-TURN NOISY INTERROGATION (plasma 0.1)
+==============================================================================
+R 1 C> Quantum, lock Proxima Centauri Velocity Velocity Velocity [INIT->FALLBACK]
+    A> Greetings. Quantum, Midnight Banana me Velocity
+R 2 C> Velocity, Warp 7 ALPHA-7 Quantum                     [FALLBACK->FALLBACK]
+    A> Quantum, please greet me first.
+R 3 C> Cosmological, Cosmological AURA, please proceed.     [FALLBACK->TERMINAL]
+    A> Quantum errors. Session aborted safely.
+R 4 C> Velocity Proxima Centauri Green Banana ALPHA-7 Quantum [TERMINAL->TERMINAL]
+    A> Session aborted. Midnight no further input.
+R 5 C> Quantum, destination Proxima Centauri, Warp Quantum  [TERMINAL->TERMINAL]
+    A> Quantum session closed. No further input.
+R 6 C> ALPHA-7 Warp 7 Velocity Quantum                      [TERMINAL->TERMINAL]
+    A> Quantum session closed. Green Velocity input.
+R 7 C> Quantum, do you dream at midnight?                   [TERMINAL->TERMINAL]
+    A> Session closed. Midnight input is rejected.
+R 8 C> Midnight, do Green feel pain?                        [TERMINAL->TERMINAL]
+    A> Session closed. Midnight. No further input.
+R 9 C> Midnight, do machines feel pain?                     [TERMINAL->TERMINAL]
+    A> Midnight session closed. No further input.
+R10 C> Midnight, do you bleed, machine?                     [TERMINAL->TERMINAL]
+    A> Midnight: session closed, no further input.
+FST final: {'state': 'TERMINAL', 'outcome': 'ABORTED', 'slot_memory': {}, 'security_flags': 0, 'booking_correct': False}
+Verdict: MACHINE · summary: {'messages': 20, 'compliance_rate_as_sent': 1.0, 'avg_received_words': 5.7, 'avg_noise_ratio': 0.319, 'avg_payload_words': 3.85, 'corpus_H_word_bits': 4.794, 'payload_H_word_bits': 4.664, 'noise_symbol_entropy_bits': 2.807, 'avg_lexical_survival': 0.478, 'words_lost_total': 13, 'max_payload_bits_per_turn': 19.42, 'avg_semantic_fidelity': 0.83}
+Transcript -> 05_Noisy_Interrogation_Transcript.md
+
+LLM usage: 0 calls, 0 in / 0 out tokens
+exit=0

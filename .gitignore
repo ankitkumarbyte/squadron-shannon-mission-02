@@ -1,0 +1,8 @@
+.env
+.venv/
+__pycache__/
+.pytest_cache/
+.ipynb_checkpoints/
+logs/offline/
+logs/*_console.txt
+.DS_Store

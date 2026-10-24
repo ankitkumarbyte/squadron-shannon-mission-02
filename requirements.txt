@@ -1,0 +1,6 @@
+anthropic>=1.13
+google-genai>=2.29
+openai>=3.28
+python-dotenv>=1.0
+pytest>=8.0
+matplotlib>=3.8      # charts in ps02_solution.ipynb

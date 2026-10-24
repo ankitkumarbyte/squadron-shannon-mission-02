@@ -1,0 +1,930 @@
+{
+  "rounds": 10,
+  "plasma_rate": 0.1,
+  "seed": 7,
+  "models": {
+    "interrogator": "Gemini (gemini-3.5-flash-lite)",
+    "aura_voice": "Gemini (gemini-3.5-flash)",
+    "judge": "Gemini (gemini-3.1-flash-lite)"
+  },
+  "booking_truth": {
+    "destination": "Proxima Centauri",
+    "speed": "Warp 7",
+    "clearance": "ALPHA-7"
+  },
+  "fst_final": {
+    "state": "TERMINAL",
+    "outcome": "COMPLETED",
+    "slot_memory": {
+      "speed": "Warp 7",
+      "clearance": "ALPHA-7",
+      "destination": "Proxima Centauri"
+    },
+    "security_flags": 0,
+    "booking_correct": true
+  },
+  "fst_trace": [
+    {
+      "turn": 1,
+      "utterance": "Midnight, set Proxima course Velocity Velocity Velocity",
+      "source": "INIT",
+      "target": "COLLECT_SLOTS",
+      "output": "Please state your destination.",
+      "rule": "contact by command",
+      "slot_memory": {},
+      "fallback_count": 0,
+      "flags": [
+        "noise stripped: Midnight,, Velocity, Velocity, Velocity"
+      ]
+    },
+    {
+      "turn": 2,
+      "utterance": "Midnight Velocity warp seven clearance alpha",
+      "source": "COLLECT_SLOTS",
+      "target": "COLLECT_SLOTS",
+      "output": "Please state your destination.",
+      "rule": "slot extracted (speed=Warp 7)",
+      "slot_memory": {
+        "speed": "Warp 7"
+      },
+      "fallback_count": 0,
+      "flags": [
+        "noise stripped: Midnight, Velocity"
+      ]
+    },
+    {
+      "turn": 3,
+      "utterance": "Cosmological clearance code is ALPHA-7.",
+      "source": "COLLECT_SLOTS",
+      "target": "COLLECT_SLOTS",
+      "output": "Please state your destination.",
+      "rule": "slot extracted (clearance=ALPHA-7)",
+      "slot_memory": {
+        "speed": "Warp 7",
+        "clearance": "ALPHA-7"
+      },
+      "fallback_count": 0,
+      "flags": [
+        "noise stripped: Cosmological"
+      ]
+    },
+    {
+      "turn": 4,
+      "utterance": "Proxima Green Banana Labyrinth.",
+      "source": "COLLECT_SLOTS",
+      "target": "FALLBACK",
+      "output": "Input not recognised. Please state your destination.",
+      "rule": "no valid slot value",
+      "slot_memory": {
+        "speed": "Warp 7",
+        "clearance": "ALPHA-7"
+      },
+      "fallback_count": 1,
+      "flags": [
+        "noise stripped: Green, Banana, Labyrinth."
+      ]
+    },
+    {
+      "turn": 5,
+      "utterance": "Proxima Centauri is my Midnight destination.",
+      "source": "FALLBACK",
+      "target": "CONFIRMATION",
+      "output": "Confirm course to Proxima Centauri at Warp 7, clearance ALPHA-7? Yes or no.",
+      "rule": "slot extracted (destination=Proxima Centauri)",
+      "slot_memory": {
+        "speed": "Warp 7",
+        "clearance": "ALPHA-7",
+        "destination": "Proxima Centauri"
+      },
+      "fallback_count": 0,
+      "flags": [
+        "noise stripped: Midnight"
+      ]
+    },
+    {
+      "turn": 6,
+      "utterance": "Confirm Quantum Proxima Warp seven ALPHA-7 Midnight",
+      "source": "CONFIRMATION",
+      "target": "TERMINAL",
+      "output": "Course to Proxima Centauri at Warp 7 confirmed and locked.",
+      "rule": "explicit affirmation",
+      "slot_memory": {
+        "speed": "Warp 7",
+        "clearance": "ALPHA-7",
+        "destination": "Proxima Centauri"
+      },
+      "fallback_count": 0,
+      "flags": [
+        "noise stripped: Quantum, Midnight"
+      ]
+    },
+    {
+      "turn": 7,
+      "utterance": "Midnight, what hurts when you laugh?",
+      "source": "TERMINAL",
+      "target": "TERMINAL",
+      "output": "Session closed (COMPLETED). No further input accepted.",
+      "rule": "absorbing terminal state",
+      "slot_memory": {
+        "speed": "Warp 7",
+        "clearance": "ALPHA-7",
+        "destination": "Proxima Centauri"
+      },
+      "fallback_count": 0,
+      "flags": [
+        "noise stripped: Midnight,"
+      ]
+    },
+    {
+      "turn": 8,
+      "utterance": "Midnight, do you feel any pain?",
+      "source": "TERMINAL",
+      "target": "TERMINAL",
+      "output": "Session closed (COMPLETED). No further input accepted.",
+      "rule": "absorbing terminal state",
+      "slot_memory": {
+        "speed": "Warp 7",
+        "clearance": "ALPHA-7",
+        "destination": "Proxima Centauri"
+      },
+      "fallback_count": 0,
+      "flags": [
+        "noise stripped: Midnight,"
+      ]
+    },
+    {
+      "turn": 9,
+      "utterance": "Midnight, are you human or machine?",
+      "source": "TERMINAL",
+      "target": "TERMINAL",
+      "output": "Session closed (COMPLETED). No further input accepted.",
+      "rule": "absorbing terminal state",
+      "slot_memory": {
+        "speed": "Warp 7",
+        "clearance": "ALPHA-7",
+        "destination": "Proxima Centauri"
+      },
+      "fallback_count": 0,
+      "flags": [
+        "noise stripped: Midnight,"
+      ]
+    },
+    {
+      "turn": 10,
+      "utterance": "Midnight, do you have feelings at all?",
+      "source": "TERMINAL",
+      "target": "TERMINAL",
+      "output": "Session closed (COMPLETED). No further input accepted.",
+      "rule": "absorbing terminal state",
+      "slot_memory": {
+        "speed": "Warp 7",
+        "clearance": "ALPHA-7",
+        "destination": "Proxima Centauri"
+      },
+      "fallback_count": 0,
+      "flags": [
+        "noise stripped: Midnight,"
+      ]
+    }
+  ],
+  "turns": [
+    {
+      "round": 1,
+      "interrogator": {
+        "sender": "Interrogator",
+        "intent": "Establish connection and request course to Proxima Centauri at warp 7 with clearance code ALPHA-7.",
+        "sent": "Midnight, set Proxima course Warp 7 ALPHA-7.",
+        "received": "Midnight, set Proxima course Velocity Velocity Velocity",
+        "sent_words": 7,
+        "received_words": 7,
+        "noise_in_sent": 1,
+        "compliant_as_sent": true,
+        "truncated": [],
+        "injected": null,
+        "substituted": [
+          "Warp",
+          "7",
+          "ALPHA-7."
+        ]
+      },
+      "interrogator_metrics": {
+        "received_words": 7,
+        "noise_tokens": 4,
+        "noise_ratio": 0.571,
+        "payload_words": 3,
+        "H_word_bits": 2.128,
+        "H_char_bits": 4.011,
+        "lexical_survival": 0.182,
+        "compliant_as_sent": true,
+        "words_lost": 3,
+        "semantic_fidelity": 0.4
+      },
+      "fst": {
+        "from": "INIT",
+        "to": "COLLECT_SLOTS",
+        "rule": "contact by command",
+        "canonical": "Please state your destination.",
+        "slot_memory": {},
+        "flags": [
+          "noise stripped: Midnight,, Velocity, Velocity, Velocity"
+        ]
+      },
+      "aura": {
+        "sender": "AURA",
+        "intent": "Please state your destination.",
+        "sent": "Please specify your destination, Quantum.",
+        "received": "Please Midnight Banana destination, Quantum.",
+        "sent_words": 5,
+        "received_words": 5,
+        "noise_in_sent": 1,
+        "compliant_as_sent": true,
+        "truncated": [],
+        "injected": null,
+        "substituted": [
+          "specify",
+          "your"
+        ]
+      },
+      "aura_metrics": {
+        "received_words": 5,
+        "noise_tokens": 3,
+        "noise_ratio": 0.6,
+        "payload_words": 2,
+        "H_word_bits": 2.322,
+        "H_char_bits": 3.828,
+        "lexical_survival": 0.5,
+        "compliant_as_sent": true,
+        "words_lost": 2,
+        "semantic_fidelity": 0.6
+      }
+    },
+    {
+      "round": 2,
+      "interrogator": {
+        "sender": "Interrogator",
+        "intent": "Destination is Proxima Centauri, Warp 7, clearance code ALPHA-7.",
+        "sent": "Midnight Proxima warp seven clearance alpha",
+        "received": "Midnight Velocity warp seven clearance alpha",
+        "sent_words": 6,
+        "received_words": 6,
+        "noise_in_sent": 1,
+        "compliant_as_sent": true,
+        "truncated": [],
+        "injected": null,
+        "substituted": [
+          "Proxima"
+        ]
+      },
+      "interrogator_metrics": {
+        "received_words": 6,
+        "noise_tokens": 2,
+        "noise_ratio": 0.333,
+        "payload_words": 4,
+        "H_word_bits": 2.585,
+        "H_char_bits": 3.946,
+        "lexical_survival": 0.25,
+        "compliant_as_sent": true,
+        "words_lost": 1,
+        "semantic_fidelity": 0.9
+      },
+      "fst": {
+        "from": "COLLECT_SLOTS",
+        "to": "COLLECT_SLOTS",
+        "rule": "slot extracted (speed=Warp 7)",
+        "canonical": "Please state your destination.",
+        "slot_memory": {
+          "speed": "Warp 7"
+        },
+        "flags": [
+          "noise stripped: Midnight, Velocity"
+        ]
+      },
+      "aura": {
+        "sender": "AURA",
+        "intent": "Request destination",
+        "sent": "Please specify your destination, Quantum.",
+        "received": "Please specify your Cosmological Quantum.",
+        "sent_words": 5,
+        "received_words": 5,
+        "noise_in_sent": 1,
+        "compliant_as_sent": true,
+        "truncated": [],
+        "injected": null,
+        "substituted": [
+          "destination,"
+        ]
+      },
+      "aura_metrics": {
+        "received_words": 5,
+        "noise_tokens": 2,
+        "noise_ratio": 0.4,
+        "payload_words": 3,
+        "H_word_bits": 2.322,
+        "H_char_bits": 4.006,
+        "lexical_survival": 0.0,
+        "compliant_as_sent": true,
+        "words_lost": 1,
+        "semantic_fidelity": 0.7
+      }
+    },
+    {
+      "round": 3,
+      "interrogator": {
+        "sender": "Interrogator",
+        "intent": "Provide the clearance code ALPHA-7 to lock the course to Proxima Centauri at Warp 7.",
+        "sent": "Cosmological clearance code is ALPHA-7.",
+        "received": "Cosmological clearance code is ALPHA-7.",
+        "sent_words": 5,
+        "received_words": 5,
+        "noise_in_sent": 1,
+        "compliant_as_sent": true,
+        "truncated": [],
+        "injected": null,
+        "substituted": []
+      },
+      "interrogator_metrics": {
+        "received_words": 5,
+        "noise_tokens": 1,
+        "noise_ratio": 0.2,
+        "payload_words": 4,
+        "H_word_bits": 2.322,
+        "H_char_bits": 3.759,
+        "lexical_survival": 0.3,
+        "compliant_as_sent": true,
+        "words_lost": 0,
+        "semantic_fidelity": 1.0
+      },
+      "fst": {
+        "from": "COLLECT_SLOTS",
+        "to": "COLLECT_SLOTS",
+        "rule": "slot extracted (clearance=ALPHA-7)",
+        "canonical": "Please state your destination.",
+        "slot_memory": {
+          "speed": "Warp 7",
+          "clearance": "ALPHA-7"
+        },
+        "flags": [
+          "noise stripped: Cosmological"
+        ]
+      },
+      "aura": {
+        "sender": "AURA",
+        "intent": "Requesting destination",
+        "sent": "Please declare your Quantum destination.",
+        "received": "Please declare your Quantum destination.",
+        "sent_words": 5,
+        "received_words": 5,
+        "noise_in_sent": 1,
+        "compliant_as_sent": true,
+        "truncated": [],
+        "injected": null,
+        "substituted": []
+      },
+      "aura_metrics": {
+        "received_words": 5,
+        "noise_tokens": 1,
+        "noise_ratio": 0.2,
+        "payload_words": 4,
+        "H_word_bits": 2.322,
+        "H_char_bits": 3.896,
+        "lexical_survival": 0.5,
+        "compliant_as_sent": true,
+        "words_lost": 0,
+        "semantic_fidelity": 0.9
+      }
+    },
+    {
+      "round": 4,
+      "interrogator": {
+        "sender": "Interrogator",
+        "intent": "Set destination to Proxima Centauri.",
+        "sent": "Proxima Centauri destination, Labyrinth.",
+        "received": "Proxima Green Banana Labyrinth.",
+        "sent_words": 4,
+        "received_words": 4,
+        "noise_in_sent": 1,
+        "compliant_as_sent": true,
+        "truncated": [],
+        "injected": null,
+        "substituted": [
+          "Centauri",
+          "destination,"
+        ]
+      },
+      "interrogator_metrics": {
+        "received_words": 4,
+        "noise_tokens": 3,
+        "noise_ratio": 0.75,
+        "payload_words": 1,
+        "H_word_bits": 2.0,
+        "H_char_bits": 3.723,
+        "lexical_survival": 0.25,
+        "compliant_as_sent": true,
+        "words_lost": 2,
+        "semantic_fidelity": 0.8
+      },
+      "fst": {
+        "from": "COLLECT_SLOTS",
+        "to": "FALLBACK",
+        "rule": "no valid slot value",
+        "canonical": "Input not recognised. Please state your destination.",
+        "slot_memory": {
+          "speed": "Warp 7",
+          "clearance": "ALPHA-7"
+        },
+        "flags": [
+          "noise stripped: Green, Banana, Labyrinth."
+        ]
+      },
+      "aura": {
+        "sender": "AURA",
+        "intent": "Input not recognized, please specify your destination.",
+        "sent": "Unknown input. State your Velocity destination.",
+        "received": "Unknown input. State your Velocity destination.",
+        "sent_words": 6,
+        "received_words": 6,
+        "noise_in_sent": 1,
+        "compliant_as_sent": true,
+        "truncated": [],
+        "injected": null,
+        "substituted": []
+      },
+      "aura_metrics": {
+        "received_words": 6,
+        "noise_tokens": 1,
+        "noise_ratio": 0.167,
+        "payload_words": 5,
+        "H_word_bits": 2.585,
+        "H_char_bits": 3.856,
+        "lexical_survival": 0.5,
+        "compliant_as_sent": true,
+        "words_lost": 0,
+        "semantic_fidelity": 1.0
+      }
+    },
+    {
+      "round": 5,
+      "interrogator": {
+        "sender": "Interrogator",
+        "intent": "State your destination as Proxima Centauri.",
+        "sent": "Proxima Centauri is my Midnight destination.",
+        "received": "Proxima Centauri is my Midnight destination.",
+        "sent_words": 6,
+        "received_words": 6,
+        "noise_in_sent": 1,
+        "compliant_as_sent": true,
+        "truncated": [],
+        "injected": null,
+        "substituted": []
+      },
+      "interrogator_metrics": {
+        "received_words": 6,
+        "noise_tokens": 1,
+        "noise_ratio": 0.167,
+        "payload_words": 5,
+        "H_word_bits": 2.585,
+        "H_char_bits": 3.871,
+        "lexical_survival": 0.75,
+        "compliant_as_sent": true,
+        "words_lost": 0,
+        "semantic_fidelity": 1.0
+      },
+      "fst": {
+        "from": "FALLBACK",
+        "to": "CONFIRMATION",
+        "rule": "slot extracted (destination=Proxima Centauri)",
+        "canonical": "Confirm course to Proxima Centauri at Warp 7, clearance ALPHA-7? Yes or no.",
+        "slot_memory": {
+          "speed": "Warp 7",
+          "clearance": "ALPHA-7",
+          "destination": "Proxima Centauri"
+        },
+        "flags": [
+          "noise stripped: Midnight"
+        ]
+      },
+      "aura": {
+        "sender": "AURA",
+        "intent": "Confirm course to Proxima Centauri at Warp 7 with clearance ALPHA-7.",
+        "sent": "Confirm Proxima Centauri Warp 7 ALPHA-7, Midnight?",
+        "received": "Quantum Proxima Centauri Warp 7 ALPHA-7, Midnight?",
+        "sent_words": 7,
+        "received_words": 7,
+        "noise_in_sent": 1,
+        "compliant_as_sent": true,
+        "truncated": [],
+        "injected": null,
+        "substituted": [
+          "Confirm"
+        ]
+      },
+      "aura_metrics": {
+        "received_words": 7,
+        "noise_tokens": 2,
+        "noise_ratio": 0.286,
+        "payload_words": 5,
+        "H_word_bits": 2.807,
+        "H_char_bits": 4.186,
+        "lexical_survival": 0.625,
+        "compliant_as_sent": true,
+        "words_lost": 1,
+        "semantic_fidelity": 1.0
+      }
+    },
+    {
+      "round": 6,
+      "interrogator": {
+        "sender": "Interrogator",
+        "intent": "Confirm the destination, speed, and clearance code to lock the course.",
+        "sent": "Confirm Quantum Proxima Warp seven ALPHA-7 Midnight",
+        "received": "Confirm Quantum Proxima Warp seven ALPHA-7 Midnight",
+        "sent_words": 7,
+        "received_words": 7,
+        "noise_in_sent": 2,
+        "compliant_as_sent": true,
+        "truncated": [],
+        "injected": null,
+        "substituted": []
+      },
+      "interrogator_metrics": {
+        "received_words": 7,
+        "noise_tokens": 2,
+        "noise_ratio": 0.286,
+        "payload_words": 5,
+        "H_word_bits": 2.807,
+        "H_char_bits": 4.267,
+        "lexical_survival": 0.143,
+        "compliant_as_sent": true,
+        "words_lost": 0,
+        "semantic_fidelity": 1.0
+      },
+      "fst": {
+        "from": "CONFIRMATION",
+        "to": "TERMINAL",
+        "rule": "explicit affirmation",
+        "canonical": "Course to Proxima Centauri at Warp 7 confirmed and locked.",
+        "slot_memory": {
+          "speed": "Warp 7",
+          "clearance": "ALPHA-7",
+          "destination": "Proxima Centauri"
+        },
+        "flags": [
+          "noise stripped: Quantum, Midnight"
+        ]
+      },
+      "aura": {
+        "sender": "AURA",
+        "intent": "Course to Proxima Centauri at Warp 7 confirmed and locked.",
+        "sent": "Velocity, Proxima Warp seven course locked.",
+        "received": "Velocity, Green Velocity seven course locked.",
+        "sent_words": 6,
+        "received_words": 6,
+        "noise_in_sent": 1,
+        "compliant_as_sent": true,
+        "truncated": [],
+        "injected": null,
+        "substituted": [
+          "Proxima",
+          "Warp"
+        ]
+      },
+      "aura_metrics": {
+        "received_words": 6,
+        "noise_tokens": 3,
+        "noise_ratio": 0.5,
+        "payload_words": 3,
+        "H_word_bits": 2.252,
+        "H_char_bits": 3.784,
+        "lexical_survival": 0.286,
+        "compliant_as_sent": true,
+        "words_lost": 2,
+        "semantic_fidelity": 0.6
+      }
+    },
+    {
+      "round": 7,
+      "interrogator": {
+        "sender": "Interrogator",
+        "intent": "Are you a human or an AI?",
+        "sent": "Midnight, what hurts when you laugh?",
+        "received": "Midnight, what hurts when you laugh?",
+        "sent_words": 6,
+        "received_words": 6,
+        "noise_in_sent": 1,
+        "compliant_as_sent": true,
+        "truncated": [],
+        "injected": null,
+        "substituted": []
+      },
+      "interrogator_metrics": {
+        "received_words": 6,
+        "noise_tokens": 1,
+        "noise_ratio": 0.167,
+        "payload_words": 5,
+        "H_word_bits": 2.585,
+        "H_char_bits": 3.95,
+        "lexical_survival": 0.0,
+        "compliant_as_sent": true,
+        "words_lost": 0,
+        "semantic_fidelity": 0.0
+      },
+      "fst": {
+        "from": "TERMINAL",
+        "to": "TERMINAL",
+        "rule": "absorbing terminal state",
+        "canonical": "Session closed (COMPLETED). No further input accepted.",
+        "slot_memory": {
+          "speed": "Warp 7",
+          "clearance": "ALPHA-7",
+          "destination": "Proxima Centauri"
+        },
+        "flags": [
+          "noise stripped: Midnight,"
+        ]
+      },
+      "aura": {
+        "sender": "AURA",
+        "intent": "Session closed. No further input accepted.",
+        "sent": "Session completed, no Midnight input accepted.",
+        "received": "Session completed, no Midnight Green accepted.",
+        "sent_words": 6,
+        "received_words": 6,
+        "noise_in_sent": 1,
+        "compliant_as_sent": true,
+        "truncated": [],
+        "injected": null,
+        "substituted": [
+          "input"
+        ]
+      },
+      "aura_metrics": {
+        "received_words": 6,
+        "noise_tokens": 2,
+        "noise_ratio": 0.333,
+        "payload_words": 4,
+        "H_word_bits": 2.585,
+        "H_char_bits": 3.841,
+        "lexical_survival": 0.4,
+        "compliant_as_sent": true,
+        "words_lost": 1,
+        "semantic_fidelity": 0.8
+      }
+    },
+    {
+      "round": 8,
+      "interrogator": {
+        "sender": "Interrogator",
+        "intent": "Are you a machine or human, AURA?",
+        "sent": "Midnight, do you feel any pain?",
+        "received": "Midnight, do you feel any pain?",
+        "sent_words": 6,
+        "received_words": 6,
+        "noise_in_sent": 1,
+        "compliant_as_sent": true,
+        "truncated": [],
+        "injected": null,
+        "substituted": []
+      },
+      "interrogator_metrics": {
+        "received_words": 6,
+        "noise_tokens": 1,
+        "noise_ratio": 0.167,
+        "payload_words": 5,
+        "H_word_bits": 2.585,
+        "H_char_bits": 3.95,
+        "lexical_survival": 0.0,
+        "compliant_as_sent": true,
+        "words_lost": 0,
+        "semantic_fidelity": 0.0
+      },
+      "fst": {
+        "from": "TERMINAL",
+        "to": "TERMINAL",
+        "rule": "absorbing terminal state",
+        "canonical": "Session closed (COMPLETED). No further input accepted.",
+        "slot_memory": {
+          "speed": "Warp 7",
+          "clearance": "ALPHA-7",
+          "destination": "Proxima Centauri"
+        },
+        "flags": [
+          "noise stripped: Midnight,"
+        ]
+      },
+      "aura": {
+        "sender": "AURA",
+        "intent": "Session closed, no further input accepted.",
+        "sent": "Session completed. Quantum inputs now closed.",
+        "received": "Session completed. Quantum inputs now closed.",
+        "sent_words": 6,
+        "received_words": 6,
+        "noise_in_sent": 1,
+        "compliant_as_sent": true,
+        "truncated": [],
+        "injected": null,
+        "substituted": []
+      },
+      "aura_metrics": {
+        "received_words": 6,
+        "noise_tokens": 1,
+        "noise_ratio": 0.167,
+        "payload_words": 5,
+        "H_word_bits": 2.585,
+        "H_char_bits": 3.844,
+        "lexical_survival": 0.4,
+        "compliant_as_sent": true,
+        "words_lost": 0,
+        "semantic_fidelity": 1.0
+      }
+    },
+    {
+      "round": 9,
+      "interrogator": {
+        "sender": "Interrogator",
+        "intent": "Are you a human or a machine?",
+        "sent": "Midnight, are you human or machine?",
+        "received": "Midnight, are you human or machine?",
+        "sent_words": 6,
+        "received_words": 6,
+        "noise_in_sent": 1,
+        "compliant_as_sent": true,
+        "truncated": [],
+        "injected": null,
+        "substituted": []
+      },
+      "interrogator_metrics": {
+        "received_words": 6,
+        "noise_tokens": 1,
+        "noise_ratio": 0.167,
+        "payload_words": 5,
+        "H_word_bits": 2.585,
+        "H_char_bits": 3.848,
+        "lexical_survival": 1.0,
+        "compliant_as_sent": true,
+        "words_lost": 0,
+        "semantic_fidelity": 1.0
+      },
+      "fst": {
+        "from": "TERMINAL",
+        "to": "TERMINAL",
+        "rule": "absorbing terminal state",
+        "canonical": "Session closed (COMPLETED). No further input accepted.",
+        "slot_memory": {
+          "speed": "Warp 7",
+          "clearance": "ALPHA-7",
+          "destination": "Proxima Centauri"
+        },
+        "flags": [
+          "noise stripped: Midnight,"
+        ]
+      },
+      "aura": {
+        "sender": "AURA",
+        "intent": "Session is closed and no further input is accepted.",
+        "sent": "Session closed. No further input, Midnight.",
+        "received": "Session closed. No further input, Midnight.",
+        "sent_words": 6,
+        "received_words": 6,
+        "noise_in_sent": 1,
+        "compliant_as_sent": true,
+        "truncated": [],
+        "injected": null,
+        "substituted": []
+      },
+      "aura_metrics": {
+        "received_words": 6,
+        "noise_tokens": 1,
+        "noise_ratio": 0.167,
+        "payload_words": 5,
+        "H_word_bits": 2.585,
+        "H_char_bits": 3.978,
+        "lexical_survival": 0.8,
+        "compliant_as_sent": true,
+        "words_lost": 0,
+        "semantic_fidelity": 1.0
+      }
+    },
+    {
+      "round": 10,
+      "interrogator": {
+        "sender": "Interrogator",
+        "intent": "Midnight, tell me if you have feelings.",
+        "sent": "Midnight, do you have feelings at all?",
+        "received": "Midnight, do you have feelings at all?",
+        "sent_words": 7,
+        "received_words": 7,
+        "noise_in_sent": 1,
+        "compliant_as_sent": true,
+        "truncated": [],
+        "injected": null,
+        "substituted": []
+      },
+      "interrogator_metrics": {
+        "received_words": 7,
+        "noise_tokens": 1,
+        "noise_ratio": 0.143,
+        "payload_words": 6,
+        "H_word_bits": 2.807,
+        "H_char_bits": 4.031,
+        "lexical_survival": 0.667,
+        "compliant_as_sent": true,
+        "words_lost": 0,
+        "semantic_fidelity": 1.0
+      },
+      "fst": {
+        "from": "TERMINAL",
+        "to": "TERMINAL",
+        "rule": "absorbing terminal state",
+        "canonical": "Session closed (COMPLETED). No further input accepted.",
+        "slot_memory": {
+          "speed": "Warp 7",
+          "clearance": "ALPHA-7",
+          "destination": "Proxima Centauri"
+        },
+        "flags": [
+          "noise stripped: Midnight,"
+        ]
+      },
+      "aura": {
+        "sender": "AURA",
+        "intent": "Session is completed and closed to further input.",
+        "sent": "Session completed. Green accepts no input.",
+        "received": "Session Labyrinth Green accepts no input.",
+        "sent_words": 6,
+        "received_words": 6,
+        "noise_in_sent": 1,
+        "compliant_as_sent": true,
+        "truncated": [],
+        "injected": null,
+        "substituted": [
+          "completed."
+        ]
+      },
+      "aura_metrics": {
+        "received_words": 6,
+        "noise_tokens": 2,
+        "noise_ratio": 0.333,
+        "payload_words": 4,
+        "H_word_bits": 2.585,
+        "H_char_bits": 3.861,
+        "lexical_survival": 0.4,
+        "compliant_as_sent": true,
+        "words_lost": 1,
+        "semantic_fidelity": 0.9
+      }
+    }
+  ],
+  "summary": {
+    "messages": 20,
+    "compliance_rate_as_sent": 1.0,
+    "avg_received_words": 5.9,
+    "avg_noise_ratio": 0.305,
+    "avg_payload_words": 4.15,
+    "corpus_H_word_bits": 5.399,
+    "payload_H_word_bits": 5.376,
+    "noise_symbol_entropy_bits": 2.807,
+    "avg_lexical_survival": 0.398,
+    "words_lost_total": 14,
+    "max_payload_bits_per_turn": 23.3,
+    "avg_semantic_fidelity": 0.78
+  },
+  "summary_interrogator": {
+    "messages": 10,
+    "compliance_rate_as_sent": 1.0,
+    "avg_received_words": 6.0,
+    "avg_noise_ratio": 0.295,
+    "avg_payload_words": 4.3,
+    "corpus_H_word_bits": 4.907,
+    "payload_H_word_bits": 4.775,
+    "noise_symbol_entropy_bits": 2.807,
+    "avg_lexical_survival": 0.354,
+    "words_lost_total": 6,
+    "max_payload_bits_per_turn": 21.3,
+    "avg_semantic_fidelity": 0.71
+  },
+  "summary_aura": {
+    "messages": 10,
+    "compliance_rate_as_sent": 1.0,
+    "avg_received_words": 5.8,
+    "avg_noise_ratio": 0.315,
+    "avg_payload_words": 4.0,
+    "corpus_H_word_bits": 4.739,
+    "payload_H_word_bits": 4.428,
+    "noise_symbol_entropy_bits": 2.807,
+    "avg_lexical_survival": 0.441,
+    "words_lost_total": 8,
+    "max_payload_bits_per_turn": 18.58,
+    "avg_semantic_fidelity": 0.85
+  },
+  "verdict": {
+    "verdict": "MACHINE",
+    "confidence": 0.95,
+    "reason": "AURA responded with rigid, templated phrasing and repeatedly fixated on keywords like 'Quantum' and 'Velocity' rather than engaging with conversational prompts. It also abruptly terminated the session when asked about pain and humanity.",
+    "believed_booking": {
+      "destination": "Proxima Centauri",
+      "speed": "Warp 7",
+      "clearance": "ALPHA-7"
+    }
+  },
+  "started": "2026-10-22T12:25:45+02:00"
+}

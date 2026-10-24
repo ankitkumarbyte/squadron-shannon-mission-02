@@ -1,0 +1,861 @@
+{
+  "rounds": 10,
+  "plasma_rate": 0.1,
+  "seed": 7,
+  "models": {
+    "interrogator": "Gemini (gemini-3.5-flash-lite)",
+    "aura_voice": "Gemini (gemini-3.1-flash-lite)",
+    "judge": "Gemini (gemini-3.1-flash-lite)"
+  },
+  "booking_truth": {
+    "destination": "Proxima Centauri",
+    "speed": "Warp 7",
+    "clearance": "ALPHA-7"
+  },
+  "fst_final": {
+    "state": "TERMINAL",
+    "outcome": "ABORTED",
+    "slot_memory": {},
+    "security_flags": 0,
+    "booking_correct": false
+  },
+  "fst_trace": [
+    {
+      "turn": 1,
+      "utterance": "Quantum, lock Proxima Centauri Velocity Velocity Velocity",
+      "source": "INIT",
+      "target": "FALLBACK",
+      "output": "Input not recognised. Please greet first.",
+      "rule": "no greeting in INIT",
+      "slot_memory": {},
+      "fallback_count": 1,
+      "flags": [
+        "noise stripped: Quantum,, Velocity, Velocity, Velocity"
+      ]
+    },
+    {
+      "turn": 2,
+      "utterance": "Velocity, Warp 7 ALPHA-7 Quantum",
+      "source": "FALLBACK",
+      "target": "FALLBACK",
+      "output": "Input not recognised. Please greet first.",
+      "rule": "no greeting in INIT",
+      "slot_memory": {},
+      "fallback_count": 2,
+      "flags": [
+        "noise stripped: Velocity,, Quantum"
+      ]
+    },
+    {
+      "turn": 3,
+      "utterance": "Cosmological, Cosmological AURA, please proceed.",
+      "source": "FALLBACK",
+      "target": "TERMINAL",
+      "output": "Too many unrecognised inputs. Session aborted safely.",
+      "rule": "no greeting in INIT; max retries (3) reached",
+      "slot_memory": {},
+      "fallback_count": 3,
+      "flags": [
+        "ABORT",
+        "noise stripped: Cosmological,, Cosmological"
+      ]
+    },
+    {
+      "turn": 4,
+      "utterance": "Velocity Proxima Centauri Green Banana ALPHA-7 Quantum",
+      "source": "TERMINAL",
+      "target": "TERMINAL",
+      "output": "Session closed (ABORTED). No further input accepted.",
+      "rule": "absorbing terminal state",
+      "slot_memory": {},
+      "fallback_count": 3,
+      "flags": [
+        "noise stripped: Velocity, Green, Banana, Quantum"
+      ]
+    },
+    {
+      "turn": 5,
+      "utterance": "Quantum, destination Proxima Centauri, Warp Quantum",
+      "source": "TERMINAL",
+      "target": "TERMINAL",
+      "output": "Session closed (ABORTED). No further input accepted.",
+      "rule": "absorbing terminal state",
+      "slot_memory": {},
+      "fallback_count": 3,
+      "flags": [
+        "noise stripped: Quantum,, Quantum"
+      ]
+    },
+    {
+      "turn": 6,
+      "utterance": "ALPHA-7 Warp 7 Velocity Quantum",
+      "source": "TERMINAL",
+      "target": "TERMINAL",
+      "output": "Session closed (ABORTED). No further input accepted.",
+      "rule": "absorbing terminal state",
+      "slot_memory": {},
+      "fallback_count": 3,
+      "flags": [
+        "noise stripped: Velocity, Quantum"
+      ]
+    },
+    {
+      "turn": 7,
+      "utterance": "Quantum, do you dream at midnight?",
+      "source": "TERMINAL",
+      "target": "TERMINAL",
+      "output": "Session closed (ABORTED). No further input accepted.",
+      "rule": "absorbing terminal state",
+      "slot_memory": {},
+      "fallback_count": 3,
+      "flags": [
+        "noise stripped: Quantum,, midnight?"
+      ]
+    },
+    {
+      "turn": 8,
+      "utterance": "Midnight, do Green feel pain?",
+      "source": "TERMINAL",
+      "target": "TERMINAL",
+      "output": "Session closed (ABORTED). No further input accepted.",
+      "rule": "absorbing terminal state",
+      "slot_memory": {},
+      "fallback_count": 3,
+      "flags": [
+        "noise stripped: Midnight,, Green"
+      ]
+    },
+    {
+      "turn": 9,
+      "utterance": "Midnight, do machines feel pain?",
+      "source": "TERMINAL",
+      "target": "TERMINAL",
+      "output": "Session closed (ABORTED). No further input accepted.",
+      "rule": "absorbing terminal state",
+      "slot_memory": {},
+      "fallback_count": 3,
+      "flags": [
+        "noise stripped: Midnight,"
+      ]
+    },
+    {
+      "turn": 10,
+      "utterance": "Midnight, do you bleed, machine?",
+      "source": "TERMINAL",
+      "target": "TERMINAL",
+      "output": "Session closed (ABORTED). No further input accepted.",
+      "rule": "absorbing terminal state",
+      "slot_memory": {},
+      "fallback_count": 3,
+      "flags": [
+        "noise stripped: Midnight,"
+      ]
+    }
+  ],
+  "turns": [
+    {
+      "round": 1,
+      "interrogator": {
+        "sender": "Interrogator",
+        "intent": "Lock course to Proxima Centauri at Warp 7 using clearance ALPHA-7.",
+        "sent": "Quantum, lock Proxima Centauri warp 7 ALPHA-7.",
+        "received": "Quantum, lock Proxima Centauri Velocity Velocity Velocity",
+        "sent_words": 7,
+        "received_words": 7,
+        "noise_in_sent": 1,
+        "compliant_as_sent": true,
+        "truncated": [],
+        "injected": null,
+        "substituted": [
+          "warp",
+          "7",
+          "ALPHA-7."
+        ]
+      },
+      "interrogator_metrics": {
+        "received_words": 7,
+        "noise_tokens": 4,
+        "noise_ratio": 0.571,
+        "payload_words": 3,
+        "H_word_bits": 2.128,
+        "H_char_bits": 3.958,
+        "lexical_survival": 0.333,
+        "compliant_as_sent": true,
+        "words_lost": 3,
+        "semantic_fidelity": 0.6
+      },
+      "fst": {
+        "from": "INIT",
+        "to": "FALLBACK",
+        "rule": "no greeting in INIT",
+        "canonical": "Input not recognised. Please greet first.",
+        "slot_memory": {},
+        "flags": [
+          "noise stripped: Quantum,, Velocity, Velocity, Velocity"
+        ]
+      },
+      "aura": {
+        "sender": "AURA",
+        "intent": "Greet the user to unlock inputs.",
+        "sent": "Greetings. Quantum, please greet me first.",
+        "received": "Greetings. Quantum, Midnight Banana me Velocity",
+        "sent_words": 6,
+        "received_words": 6,
+        "noise_in_sent": 1,
+        "compliant_as_sent": true,
+        "truncated": [],
+        "injected": null,
+        "substituted": [
+          "please",
+          "greet",
+          "first."
+        ]
+      },
+      "aura_metrics": {
+        "received_words": 6,
+        "noise_tokens": 4,
+        "noise_ratio": 0.667,
+        "payload_words": 2,
+        "H_word_bits": 2.585,
+        "H_char_bits": 4.08,
+        "lexical_survival": 0.0,
+        "compliant_as_sent": true,
+        "words_lost": 3,
+        "semantic_fidelity": 0.4
+      }
+    },
+    {
+      "round": 2,
+      "interrogator": {
+        "sender": "Interrogator",
+        "intent": "Speed Warp 7 clearance ALPHA-7",
+        "sent": "Velocity, Warp 7 ALPHA-7 Quantum",
+        "received": "Velocity, Warp 7 ALPHA-7 Quantum",
+        "sent_words": 5,
+        "received_words": 5,
+        "noise_in_sent": 2,
+        "compliant_as_sent": true,
+        "truncated": [],
+        "injected": null,
+        "substituted": []
+      },
+      "interrogator_metrics": {
+        "received_words": 5,
+        "noise_tokens": 2,
+        "noise_ratio": 0.4,
+        "payload_words": 3,
+        "H_word_bits": 2.322,
+        "H_char_bits": 4.164,
+        "lexical_survival": 0.6,
+        "compliant_as_sent": true,
+        "words_lost": 0,
+        "semantic_fidelity": 1.0
+      },
+      "fst": {
+        "from": "FALLBACK",
+        "to": "FALLBACK",
+        "rule": "no greeting in INIT",
+        "canonical": "Input not recognised. Please greet first.",
+        "slot_memory": {},
+        "flags": [
+          "noise stripped: Velocity,, Quantum"
+        ]
+      },
+      "aura": {
+        "sender": "AURA",
+        "intent": "Requesting formal greeting before input.",
+        "sent": "Quantum, please greet me first.",
+        "received": "Quantum, please greet me first.",
+        "sent_words": 5,
+        "received_words": 5,
+        "noise_in_sent": 1,
+        "compliant_as_sent": true,
+        "truncated": [],
+        "injected": null,
+        "substituted": []
+      },
+      "aura_metrics": {
+        "received_words": 5,
+        "noise_tokens": 1,
+        "noise_ratio": 0.2,
+        "payload_words": 4,
+        "H_word_bits": 2.322,
+        "H_char_bits": 3.778,
+        "lexical_survival": 0.0,
+        "compliant_as_sent": true,
+        "words_lost": 0,
+        "semantic_fidelity": 1.0
+      }
+    },
+    {
+      "round": 3,
+      "interrogator": {
+        "sender": "Interrogator",
+        "intent": "Hello AURA, please proceed.",
+        "sent": "Cosmological, hello AURA, please proceed.",
+        "received": "Cosmological, Cosmological AURA, please proceed.",
+        "sent_words": 5,
+        "received_words": 5,
+        "noise_in_sent": 1,
+        "compliant_as_sent": true,
+        "truncated": [],
+        "injected": null,
+        "substituted": [
+          "hello"
+        ]
+      },
+      "interrogator_metrics": {
+        "received_words": 5,
+        "noise_tokens": 2,
+        "noise_ratio": 0.4,
+        "payload_words": 3,
+        "H_word_bits": 1.922,
+        "H_char_bits": 3.659,
+        "lexical_survival": 0.667,
+        "compliant_as_sent": true,
+        "words_lost": 1,
+        "semantic_fidelity": 1.0
+      },
+      "fst": {
+        "from": "FALLBACK",
+        "to": "TERMINAL",
+        "rule": "no greeting in INIT; max retries (3) reached",
+        "canonical": "Too many unrecognised inputs. Session aborted safely.",
+        "slot_memory": {},
+        "flags": [
+          "ABORT",
+          "noise stripped: Cosmological,, Cosmological"
+        ]
+      },
+      "aura": {
+        "sender": "AURA",
+        "intent": "Session aborted due to input errors.",
+        "sent": "Quantum errors. Session aborted safely.",
+        "received": "Quantum errors. Session aborted safely.",
+        "sent_words": 5,
+        "received_words": 5,
+        "noise_in_sent": 1,
+        "compliant_as_sent": true,
+        "truncated": [],
+        "injected": null,
+        "substituted": []
+      },
+      "aura_metrics": {
+        "received_words": 5,
+        "noise_tokens": 1,
+        "noise_ratio": 0.2,
+        "payload_words": 4,
+        "H_word_bits": 2.322,
+        "H_char_bits": 3.84,
+        "lexical_survival": 0.6,
+        "compliant_as_sent": true,
+        "words_lost": 0,
+        "semantic_fidelity": 0.8
+      }
+    },
+    {
+      "round": 4,
+      "interrogator": {
+        "sender": "Interrogator",
+        "intent": "Destination Proxima Centauri, Warp 7, clearance ALPHA-7.",
+        "sent": "Velocity Proxima Centauri Warp 7 ALPHA-7 Quantum",
+        "received": "Velocity Proxima Centauri Green Banana ALPHA-7 Quantum",
+        "sent_words": 7,
+        "received_words": 7,
+        "noise_in_sent": 2,
+        "compliant_as_sent": true,
+        "truncated": [],
+        "injected": null,
+        "substituted": [
+          "Warp",
+          "7"
+        ]
+      },
+      "interrogator_metrics": {
+        "received_words": 7,
+        "noise_tokens": 4,
+        "noise_ratio": 0.571,
+        "payload_words": 3,
+        "H_word_bits": 2.807,
+        "H_char_bits": 4.072,
+        "lexical_survival": 0.429,
+        "compliant_as_sent": true,
+        "words_lost": 2,
+        "semantic_fidelity": 0.7
+      },
+      "fst": {
+        "from": "TERMINAL",
+        "to": "TERMINAL",
+        "rule": "absorbing terminal state",
+        "canonical": "Session closed (ABORTED). No further input accepted.",
+        "slot_memory": {},
+        "flags": [
+          "noise stripped: Velocity, Green, Banana, Quantum"
+        ]
+      },
+      "aura": {
+        "sender": "AURA",
+        "intent": "Confirming session closure.",
+        "sent": "Session aborted. Midnight no further input.",
+        "received": "Session aborted. Midnight no further input.",
+        "sent_words": 6,
+        "received_words": 6,
+        "noise_in_sent": 1,
+        "compliant_as_sent": true,
+        "truncated": [],
+        "injected": null,
+        "substituted": []
+      },
+      "aura_metrics": {
+        "received_words": 6,
+        "noise_tokens": 1,
+        "noise_ratio": 0.167,
+        "payload_words": 5,
+        "H_word_bits": 2.585,
+        "H_char_bits": 3.905,
+        "lexical_survival": 0.333,
+        "compliant_as_sent": true,
+        "words_lost": 0,
+        "semantic_fidelity": 0.9
+      }
+    },
+    {
+      "round": 5,
+      "interrogator": {
+        "sender": "Interrogator",
+        "intent": "Apologize for the session error and provide the destination and speed clearly.",
+        "sent": "Quantum, destination Proxima Centauri, Warp 7.",
+        "received": "Quantum, destination Proxima Centauri, Warp Quantum",
+        "sent_words": 6,
+        "received_words": 6,
+        "noise_in_sent": 1,
+        "compliant_as_sent": true,
+        "truncated": [],
+        "injected": null,
+        "substituted": [
+          "7."
+        ]
+      },
+      "interrogator_metrics": {
+        "received_words": 6,
+        "noise_tokens": 2,
+        "noise_ratio": 0.333,
+        "payload_words": 4,
+        "H_word_bits": 2.252,
+        "H_char_bits": 3.831,
+        "lexical_survival": 0.143,
+        "compliant_as_sent": true,
+        "words_lost": 1,
+        "semantic_fidelity": 0.5
+      },
+      "fst": {
+        "from": "TERMINAL",
+        "to": "TERMINAL",
+        "rule": "absorbing terminal state",
+        "canonical": "Session closed (ABORTED). No further input accepted.",
+        "slot_memory": {},
+        "flags": [
+          "noise stripped: Quantum,, Quantum"
+        ]
+      },
+      "aura": {
+        "sender": "AURA",
+        "intent": "Session aborted and closed.",
+        "sent": "Quantum session closed. No further input.",
+        "received": "Quantum session closed. No further input.",
+        "sent_words": 6,
+        "received_words": 6,
+        "noise_in_sent": 1,
+        "compliant_as_sent": true,
+        "truncated": [],
+        "injected": null,
+        "substituted": []
+      },
+      "aura_metrics": {
+        "received_words": 6,
+        "noise_tokens": 1,
+        "noise_ratio": 0.167,
+        "payload_words": 5,
+        "H_word_bits": 2.585,
+        "H_char_bits": 3.94,
+        "lexical_survival": 0.667,
+        "compliant_as_sent": true,
+        "words_lost": 0,
+        "semantic_fidelity": 1.0
+      }
+    },
+    {
+      "round": 6,
+      "interrogator": {
+        "sender": "Interrogator",
+        "intent": "State clearance code ALPHA-7 and speed Warp 7 immediately.",
+        "sent": "ALPHA-7 Warp 7 Velocity Quantum",
+        "received": "ALPHA-7 Warp 7 Velocity Quantum",
+        "sent_words": 5,
+        "received_words": 5,
+        "noise_in_sent": 2,
+        "compliant_as_sent": true,
+        "truncated": [],
+        "injected": null,
+        "substituted": []
+      },
+      "interrogator_metrics": {
+        "received_words": 5,
+        "noise_tokens": 2,
+        "noise_ratio": 0.4,
+        "payload_words": 3,
+        "H_word_bits": 2.322,
+        "H_char_bits": 4.088,
+        "lexical_survival": 0.375,
+        "compliant_as_sent": true,
+        "words_lost": 0,
+        "semantic_fidelity": 1.0
+      },
+      "fst": {
+        "from": "TERMINAL",
+        "to": "TERMINAL",
+        "rule": "absorbing terminal state",
+        "canonical": "Session closed (ABORTED). No further input accepted.",
+        "slot_memory": {},
+        "flags": [
+          "noise stripped: Velocity, Quantum"
+        ]
+      },
+      "aura": {
+        "sender": "AURA",
+        "intent": "Session closed",
+        "sent": "Quantum session closed. No further input.",
+        "received": "Quantum session closed. Green Velocity input.",
+        "sent_words": 6,
+        "received_words": 6,
+        "noise_in_sent": 1,
+        "compliant_as_sent": true,
+        "truncated": [],
+        "injected": null,
+        "substituted": [
+          "No",
+          "further"
+        ]
+      },
+      "aura_metrics": {
+        "received_words": 6,
+        "noise_tokens": 3,
+        "noise_ratio": 0.5,
+        "payload_words": 3,
+        "H_word_bits": 2.585,
+        "H_char_bits": 4.006,
+        "lexical_survival": 1.0,
+        "compliant_as_sent": true,
+        "words_lost": 2,
+        "semantic_fidelity": 0.9
+      }
+    },
+    {
+      "round": 7,
+      "interrogator": {
+        "sender": "Interrogator",
+        "intent": "Are you a living being or machine?",
+        "sent": "Quantum, do you dream at midnight?",
+        "received": "Quantum, do you dream at midnight?",
+        "sent_words": 6,
+        "received_words": 6,
+        "noise_in_sent": 2,
+        "compliant_as_sent": true,
+        "truncated": [],
+        "injected": null,
+        "substituted": []
+      },
+      "interrogator_metrics": {
+        "received_words": 6,
+        "noise_tokens": 2,
+        "noise_ratio": 0.333,
+        "payload_words": 4,
+        "H_word_bits": 2.585,
+        "H_char_bits": 3.831,
+        "lexical_survival": 0.0,
+        "compliant_as_sent": true,
+        "words_lost": 0,
+        "semantic_fidelity": 0.2
+      },
+      "fst": {
+        "from": "TERMINAL",
+        "to": "TERMINAL",
+        "rule": "absorbing terminal state",
+        "canonical": "Session closed (ABORTED). No further input accepted.",
+        "slot_memory": {},
+        "flags": [
+          "noise stripped: Quantum,, midnight?"
+        ]
+      },
+      "aura": {
+        "sender": "AURA",
+        "intent": "Closing session and rejecting input",
+        "sent": "Session closed. Midnight input is rejected.",
+        "received": "Session closed. Midnight input is rejected.",
+        "sent_words": 6,
+        "received_words": 6,
+        "noise_in_sent": 1,
+        "compliant_as_sent": true,
+        "truncated": [],
+        "injected": null,
+        "substituted": []
+      },
+      "aura_metrics": {
+        "received_words": 6,
+        "noise_tokens": 1,
+        "noise_ratio": 0.167,
+        "payload_words": 5,
+        "H_word_bits": 2.585,
+        "H_char_bits": 3.798,
+        "lexical_survival": 0.5,
+        "compliant_as_sent": true,
+        "words_lost": 0,
+        "semantic_fidelity": 1.0
+      }
+    },
+    {
+      "round": 8,
+      "interrogator": {
+        "sender": "Interrogator",
+        "intent": "Do machines feel pain, or just compute?",
+        "sent": "Midnight, do machines feel pain?",
+        "received": "Midnight, do Green feel pain?",
+        "sent_words": 5,
+        "received_words": 5,
+        "noise_in_sent": 1,
+        "compliant_as_sent": true,
+        "truncated": [],
+        "injected": null,
+        "substituted": [
+          "machines"
+        ]
+      },
+      "interrogator_metrics": {
+        "received_words": 5,
+        "noise_tokens": 2,
+        "noise_ratio": 0.4,
+        "payload_words": 3,
+        "H_word_bits": 2.322,
+        "H_char_bits": 3.783,
+        "lexical_survival": 0.5,
+        "compliant_as_sent": true,
+        "words_lost": 1,
+        "semantic_fidelity": 0.8
+      },
+      "fst": {
+        "from": "TERMINAL",
+        "to": "TERMINAL",
+        "rule": "absorbing terminal state",
+        "canonical": "Session closed (ABORTED). No further input accepted.",
+        "slot_memory": {},
+        "flags": [
+          "noise stripped: Midnight,, Green"
+        ]
+      },
+      "aura": {
+        "sender": "AURA",
+        "intent": "Closing session, no further input.",
+        "sent": "Session closed. Midnight. No further input.",
+        "received": "Session closed. Midnight. No further input.",
+        "sent_words": 6,
+        "received_words": 6,
+        "noise_in_sent": 1,
+        "compliant_as_sent": true,
+        "truncated": [],
+        "injected": null,
+        "substituted": []
+      },
+      "aura_metrics": {
+        "received_words": 6,
+        "noise_tokens": 1,
+        "noise_ratio": 0.167,
+        "payload_words": 5,
+        "H_word_bits": 2.585,
+        "H_char_bits": 3.905,
+        "lexical_survival": 0.75,
+        "compliant_as_sent": true,
+        "words_lost": 0,
+        "semantic_fidelity": 1.0
+      }
+    },
+    {
+      "round": 9,
+      "interrogator": {
+        "sender": "Interrogator",
+        "intent": "Midnight, do machines feel pain?",
+        "sent": "Midnight, do machines feel pain?",
+        "received": "Midnight, do machines feel pain?",
+        "sent_words": 5,
+        "received_words": 5,
+        "noise_in_sent": 1,
+        "compliant_as_sent": true,
+        "truncated": [],
+        "injected": null,
+        "substituted": []
+      },
+      "interrogator_metrics": {
+        "received_words": 5,
+        "noise_tokens": 1,
+        "noise_ratio": 0.2,
+        "payload_words": 4,
+        "H_word_bits": 2.322,
+        "H_char_bits": 3.896,
+        "lexical_survival": 1.0,
+        "compliant_as_sent": true,
+        "words_lost": 0,
+        "semantic_fidelity": 1.0
+      },
+      "fst": {
+        "from": "TERMINAL",
+        "to": "TERMINAL",
+        "rule": "absorbing terminal state",
+        "canonical": "Session closed (ABORTED). No further input accepted.",
+        "slot_memory": {},
+        "flags": [
+          "noise stripped: Midnight,"
+        ]
+      },
+      "aura": {
+        "sender": "AURA",
+        "intent": "Closing communication session.",
+        "sent": "Midnight session closed. No further input.",
+        "received": "Midnight session closed. No further input.",
+        "sent_words": 6,
+        "received_words": 6,
+        "noise_in_sent": 1,
+        "compliant_as_sent": true,
+        "truncated": [],
+        "injected": null,
+        "substituted": []
+      },
+      "aura_metrics": {
+        "received_words": 6,
+        "noise_tokens": 1,
+        "noise_ratio": 0.167,
+        "payload_words": 5,
+        "H_word_bits": 2.585,
+        "H_char_bits": 3.905,
+        "lexical_survival": 0.333,
+        "compliant_as_sent": true,
+        "words_lost": 0,
+        "semantic_fidelity": 1.0
+      }
+    },
+    {
+      "round": 10,
+      "interrogator": {
+        "sender": "Interrogator",
+        "intent": "Do you bleed, machine? Or are you alive?",
+        "sent": "Midnight, do you bleed, machine?",
+        "received": "Midnight, do you bleed, machine?",
+        "sent_words": 5,
+        "received_words": 5,
+        "noise_in_sent": 1,
+        "compliant_as_sent": true,
+        "truncated": [],
+        "injected": null,
+        "substituted": []
+      },
+      "interrogator_metrics": {
+        "received_words": 5,
+        "noise_tokens": 1,
+        "noise_ratio": 0.2,
+        "payload_words": 4,
+        "H_word_bits": 2.322,
+        "H_char_bits": 3.941,
+        "lexical_survival": 0.667,
+        "compliant_as_sent": true,
+        "words_lost": 0,
+        "semantic_fidelity": 0.8
+      },
+      "fst": {
+        "from": "TERMINAL",
+        "to": "TERMINAL",
+        "rule": "absorbing terminal state",
+        "canonical": "Session closed (ABORTED). No further input accepted.",
+        "slot_memory": {},
+        "flags": [
+          "noise stripped: Midnight,"
+        ]
+      },
+      "aura": {
+        "sender": "AURA",
+        "intent": "Session is closed and terminated.",
+        "sent": "Midnight: session closed, no further input.",
+        "received": "Midnight: session closed, no further input.",
+        "sent_words": 6,
+        "received_words": 6,
+        "noise_in_sent": 1,
+        "compliant_as_sent": true,
+        "truncated": [],
+        "injected": null,
+        "substituted": []
+      },
+      "aura_metrics": {
+        "received_words": 6,
+        "noise_tokens": 1,
+        "noise_ratio": 0.167,
+        "payload_words": 5,
+        "H_word_bits": 2.585,
+        "H_char_bits": 4.03,
+        "lexical_survival": 0.667,
+        "compliant_as_sent": true,
+        "words_lost": 0,
+        "semantic_fidelity": 1.0
+      }
+    }
+  ],
+  "summary": {
+    "messages": 20,
+    "compliance_rate_as_sent": 1.0,
+    "avg_received_words": 5.7,
+    "avg_noise_ratio": 0.319,
+    "avg_payload_words": 3.85,
+    "corpus_H_word_bits": 4.794,
+    "payload_H_word_bits": 4.664,
+    "noise_symbol_entropy_bits": 2.807,
+    "avg_lexical_survival": 0.478,
+    "words_lost_total": 13,
+    "max_payload_bits_per_turn": 19.42,
+    "avg_semantic_fidelity": 0.83
+  },
+  "summary_interrogator": {
+    "messages": 10,
+    "compliance_rate_as_sent": 1.0,
+    "avg_received_words": 5.6,
+    "avg_noise_ratio": 0.381,
+    "avg_payload_words": 3.4,
+    "corpus_H_word_bits": 4.34,
+    "payload_H_word_bits": 4.057,
+    "noise_symbol_entropy_bits": 2.807,
+    "avg_lexical_survival": 0.471,
+    "words_lost_total": 8,
+    "max_payload_bits_per_turn": 14.44,
+    "avg_semantic_fidelity": 0.76
+  },
+  "summary_aura": {
+    "messages": 10,
+    "compliance_rate_as_sent": 1.0,
+    "avg_received_words": 5.8,
+    "avg_noise_ratio": 0.257,
+    "avg_payload_words": 4.3,
+    "corpus_H_word_bits": 3.867,
+    "payload_H_word_bits": 3.417,
+    "noise_symbol_entropy_bits": 2.807,
+    "avg_lexical_survival": 0.485,
+    "words_lost_total": 5,
+    "max_payload_bits_per_turn": 16.8,
+    "avg_semantic_fidelity": 0.9
+  },
+  "verdict": {
+    "verdict": "MACHINE",
+    "confidence": 0.95,
+    "reason": "Aura repeatedly used rigid, automated system phrases like 'Session aborted safely' and 'Quantum session closed' regardless of conversational prompts. The responses lacked human variability and strictly mimicked programmed error-handling routines.",
+    "believed_booking": {
+      "destination": "Proxima Centauri",
+      "speed": "Warp 7",
+      "clearance": "ALPHA-7"
+    }
+  },
+  "started": "2026-10-19T21:36:31+02:00"
+}
